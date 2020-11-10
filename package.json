@@ -1,5 +1,5 @@
 {
-  "name": "hello-neon",
+  "name": "@b.norris/hello-neon",
   "version": "0.1.2",
   "description": "",
   "main": "lib/index.js",
@@ -12,9 +12,12 @@
     "node-pre-gyp-github": "^1.4.3"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build=false || neon build --release",
+    "build": "neon build",
+    "build-release": "neon build --release",
+    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
     "package": "node-pre-gyp package",
-    "upload-binary": "node-pre-gyp package && node-pre-gyp-github publish"
+    "upload-binary": "yarn build-release && node-pre-gyp package && node-pre-gyp-github publish",
+    "version": "yarn build-release"
   },
   "repository": {
     "type": "git",
